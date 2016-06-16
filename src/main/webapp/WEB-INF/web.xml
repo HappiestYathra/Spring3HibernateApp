@@ -13,6 +13,20 @@
         <load-on-startup>1</load-on-startup>
 	</servlet>
 
+<servlet>
+        <servlet-name>FileUploadServlet</servlet-name>
+        <servlet-class>com.sample.servlet.FileUploadServlet</servlet-class>
+        
+        
+    </servlet>
+    
+   
+
+    <servlet-mapping>
+        <servlet-name>FileUploadServlet</servlet-name>
+        <url-pattern>/FileUploadServlet</url-pattern>
+        
+    </servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>sdnext</servlet-name>
 		<url-pattern>*.html</url-pattern>

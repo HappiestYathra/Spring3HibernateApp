@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sample.bean.EmployeeBean;
+import com.sample.bean.FileBean;
 import com.sample.model.Employee;
 import com.sample.service.EmployeeService;
 
@@ -44,6 +45,22 @@ public class EmployeeController {
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("employees",  prepareListofBean(employeeService.listEmployeess()));
 		return new ModelAndView("addEmployee", model);
+	}
+	
+	@RequestMapping(value = "/fileUpload", method = RequestMethod.GET)
+	public ModelAndView fileUpload(@ModelAttribute("command")  FileBean fileBean,
+			BindingResult result) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		//model.put("employees",  prepareListofBean(employeeService.listEmployeess()));
+		return new ModelAndView("fileUpload", model);
+	}
+	
+	@RequestMapping(value = "/saveFile", method = RequestMethod.POST)
+	public ModelAndView saveFile(@ModelAttribute("command") FileBean fileBean, 
+			BindingResult result) {
+		//Employee employee = prepareModel(employeeBean);
+		//employeeService.addEmployee(employee);
+		return new ModelAndView("index");
 	}
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
