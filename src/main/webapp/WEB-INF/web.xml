@@ -20,6 +20,13 @@
         
     </servlet>
     
+    <servlet>
+        <servlet-name>DownloadServlet</servlet-name>
+        <servlet-class>com.sample.servlet.DownloadServlet</servlet-class>
+        
+        
+    </servlet>
+    
    
 
     <servlet-mapping>
@@ -27,6 +34,13 @@
         <url-pattern>/FileUploadServlet</url-pattern>
         
     </servlet-mapping>
+    
+     <servlet-mapping>
+        <servlet-name>DownloadServlet</servlet-name>
+        <url-pattern>/DownloadServlet</url-pattern>
+        
+    </servlet-mapping>
+    
 	<servlet-mapping>
 		<servlet-name>sdnext</servlet-name>
 		<url-pattern>*.html</url-pattern>
