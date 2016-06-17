@@ -1,0 +1,25 @@
+version: "2"
+services:
+  mysqldb:
+    build: mysql/.
+    volumes:
+      - /mysql/data:/var/lib/mysql
+      - /mysql/log/mysqld.log:/var/log/mysqld.log
+
+  spring3app:
+    build: tomcat/.
+    volumes:
+      - /tomcat/logs:/usr/local/tomcat/logs
+    ports:
+      - "8080:8080"
+    depends_on:  
+      - mysqldb
+    links:
+      - mysqldb:mysql-container
+  
+#nginx:
+#  build: /root/git/DockerTutorial/spring3app/nginx/.
+#  ports:
+#   - "80:80"
+#  links:
+#   - mytom
