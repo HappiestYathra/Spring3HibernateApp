@@ -14,14 +14,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sample.bean.EmployeeBean;
+import com.sample.bean.FileBean;
 import com.sample.model.Employee;
 import com.sample.service.EmployeeService;
+import com.sample.service.ImageService;
 
 @Controller
 public class EmployeeController {
 	
 	@Autowired
 	private EmployeeService employeeService;
+	
+	@Autowired
+	private ImageService imageService;
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public ModelAndView saveEmployee(@ModelAttribute("command") EmployeeBean employeeBean, 
@@ -38,6 +43,14 @@ public class EmployeeController {
 		return new ModelAndView("employeesList", model);
 	}
 
+	@RequestMapping(value="/listImages", method = RequestMethod.GET)
+	public ModelAndView listImages() {
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("images",  imageService.listImages());
+		return new ModelAndView("listImages", model);
+	}
+
+	
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public ModelAndView addEmployee(@ModelAttribute("command")  EmployeeBean employeeBean,
 			BindingResult result) {
@@ -45,6 +58,14 @@ public class EmployeeController {
 		model.put("employees",  prepareListofBean(employeeService.listEmployeess()));
 		return new ModelAndView("addEmployee", model);
 	}
+	
+	@RequestMapping(value = "/fileUpload", method = RequestMethod.GET)
+	public ModelAndView fileUpload(@ModelAttribute("command")  FileBean fileBean,
+			BindingResult result) {
+		Map<String, Object> model = new HashMap<String, Object>();
+		return new ModelAndView("fileUpload", model);
+	}
+	
 	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView welcome() {
