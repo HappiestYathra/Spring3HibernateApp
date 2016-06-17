@@ -9,10 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sample.dao.EmployeeDao;
+
 import com.sample.dao.ImageDao;
-import com.sample.dao.ImageDaoImpl;
-import com.sample.model.Employee;
 import com.sample.model.Image;
 
 @Service("imageService")
