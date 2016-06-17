@@ -18,9 +18,3 @@ services:
     links:
       - mysqldb:mysql-container
   
-#nginx:
-#  build: /root/git/DockerTutorial/spring3app/nginx/.
-#  ports:
-#   - "80:80"
-#  links:
-#   - mytom
